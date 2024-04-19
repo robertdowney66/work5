@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuyu.dao.UserDao">
+    <update id="updateUserDeleteById">
+        update  user set deleted = 1 where id = ${userid}
+    </update>
+
+
+    <select id="getRidByUserId" resultType="java.lang.Integer">
+
+
+
+    </select>
+    <select id="getUserDeletedById" resultType="com.yuyu.pojo.DO.User">
+        select user_name,nick_name,password,
+               rid,created_at,updated_at,deleted,deleted_at
+               from user where deleted = 0 and id = ${userid};
+    </select>
+    <select id="getUserDeletedByName" resultType="com.yuyu.pojo.DO.User">
+        select user_name,nick_name,password,
+               rid,created_at,updated_at,deleted,deleted_at
+        from user where deleted = 0 and user_name = '${userName}';
+    </select>
+</mapper>
